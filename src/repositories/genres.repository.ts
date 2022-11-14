@@ -19,12 +19,12 @@ async function listMany (): Promise<QueryResult<Name>> {
         `
             SELECT
                 genres.id,
-                genres.name AS platform,
+                genres.name AS genre,
                 COUNT(movies."genreId") AS movies 
             FROM genres
-            JOIN movies
+            LEFT JOIN movies
             ON movies."genreId" = genres.id
-            GROUP BY platform, genres.id
+            GROUP BY genre, genres.id
         ;`
     );
 
