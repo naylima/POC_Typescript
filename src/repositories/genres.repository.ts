@@ -1,6 +1,7 @@
 import { connection } from "../database/database.js";
 import { QueryResult } from 'pg';
 import { Name } from "../protocols/name.js";
+import { GenreEntity } from "../protocols/genre.js";
 
 const TABLE = "genres";
 
@@ -13,7 +14,7 @@ async function insertUnique (genre: Name) {
     return response;
 };
 
-async function listMany (): Promise<QueryResult<Name>> {
+async function listMany (): Promise<QueryResult<GenreEntity>> {
 
     const response: QueryResult  = await connection.query(
         `
